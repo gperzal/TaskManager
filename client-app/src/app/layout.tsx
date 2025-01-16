@@ -1,28 +1,32 @@
 "use client";
 
-import { ChakraProvider, extendTheme, ColorModeScript } from "@chakra-ui/react";
-import "./globals.css";
-
-// Configuración del tema
-const theme = extendTheme({
-  config: {
-    initialColorMode: "dark",
-    useSystemColorMode: true,
-  },
-});
+import { ChakraProvider, Box, Flex } from "@chakra-ui/react";
+import Navbar from "@/modules/common/Navbar";
+import Footer from "@/modules/common/Footer";
+import theme from "@/styles/theme";
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
+  const isDashboard = pathname.startsWith("/dashboard"); 
+
   return (
     <html lang="en">
-      <head />
       <body>
-        {/* ColorModeScript asegura que el tema inicial coincida entre SSR y CSR */}
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
-        <ChakraProvider theme={theme}>{children}</ChakraProvider>
+        <ChakraProvider theme={theme}>
+          <Flex direction="column" minH="100vh">
+            {/* Renderiza Navbar y Footer solo fuera del dashboard */}
+            {!isDashboard && <Navbar />}
+            <Box as="main" flex="1">
+              {children}
+            </Box>
+            {!isDashboard && <Footer />}
+          </Flex>
+        </ChakraProvider>
       </body>
     </html>
   );
