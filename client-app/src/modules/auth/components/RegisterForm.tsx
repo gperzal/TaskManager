@@ -19,11 +19,15 @@ import {
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { authApi } from "@/services/api";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
+  const router = useRouter();
 
   const {
     register,
@@ -32,15 +36,35 @@ const RegisterForm = () => {
     watch,
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log("Formulario enviado", data);
-    toast({
-      title: "Cuenta creada.",
-      description: "Te has registrado exitosamente.",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-    });
+  const onSubmit = async (data: any) => {
+    try {
+      setIsLoading(true);
+      await authApi.register({
+        email: data.email,
+        password: data.password,
+      });
+
+      toast({
+        title: "Cuenta creada.",
+        description: "Te has registrado exitosamente.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+
+      // Opcional: redirigir al usuario después del registro exitoso
+      router.push('/login');
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.response?.data?.message || "Error al registrarse",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const password = watch("password");
@@ -62,7 +86,7 @@ const RegisterForm = () => {
               },
             })}
           />
-          <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
+          <FormErrorMessage>{errors.email?.message as string}</FormErrorMessage>
         </FormControl>
 
         {/* Contraseña */}
@@ -91,7 +115,7 @@ const RegisterForm = () => {
               />
             </InputRightElement>
           </InputGroup>
-          <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
+          <FormErrorMessage>{errors.password?.message as string}</FormErrorMessage>
         </FormControl>
 
         {/* Confirmar Contraseña */}
@@ -120,11 +144,18 @@ const RegisterForm = () => {
               />
             </InputRightElement>
           </InputGroup>
-          <FormErrorMessage>{errors.confirmPassword?.message}</FormErrorMessage>
+          <FormErrorMessage>{errors.confirmPassword?.message as string}</FormErrorMessage>
         </FormControl>
 
         {/* Botón Registrar */}
-        <Button type="submit" colorScheme="teal" w="full" size="lg">
+        <Button 
+          type="submit" 
+          colorScheme="teal" 
+          w="full" 
+          size="lg"
+          isLoading={isLoading}
+          loadingText="Registrando..."
+        >
           Registrarse
         </Button>
 
@@ -141,6 +172,7 @@ const RegisterForm = () => {
             colorScheme="red"
             variant="outline"
             flex={1}
+            isDisabled={isLoading}
           >
             Google
           </Button>
@@ -149,6 +181,7 @@ const RegisterForm = () => {
             colorScheme="gray"
             variant="outline"
             flex={1}
+            isDisabled={isLoading}
           >
             GitHub
           </Button>

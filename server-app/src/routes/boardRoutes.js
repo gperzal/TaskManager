@@ -1,7 +1,7 @@
 import express from 'express';
 import { body } from 'express-validator';
 import { auth } from '../middleware/auth.js';
-import boardController from '../controllers/board.controller.js';
+
 
 const boardRouter = express.Router();
 

@@ -1,5 +1,9 @@
 "use client";
 
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { authApi } from "@/services/api";
 import {
   Box,
   Button,
@@ -16,14 +20,16 @@ import {
   useToast,
   FormErrorMessage,
   Checkbox,
+  Container,
+  Heading,
 } from "@chakra-ui/react";
-import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle, FaGithub } from "react-icons/fa";
-import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const toast = useToast();
+  const router = useRouter();
 
   const {
     register,
@@ -31,127 +37,108 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log("Formulario enviado", data);
-    toast({
-      title: "Inicio de sesión exitoso.",
-      description: "Has iniciado sesión correctamente.",
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-    });
+  const onSubmit = async (data: any) => {
+    setIsLoading(true);
+    try {
+      await authApi.login(data);
+      toast({
+        title: "Inicio de sesión exitoso.",
+        description: "Has iniciado sesión correctamente.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      router.push('/dashboard'); // Redirige al dashboard después del login exitoso
+    } catch (error: any) {
+      toast({
+        title: "Error de inicio de sesión.",
+        description: error.message || "Ha ocurrido un error al iniciar sesión.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleGuestLogin = () => {
-    toast({
-      title: "Inicio como invitado.",
-      description: "Has iniciado sesión como invitado.",
-      status: "info",
-      duration: 3000,
-      isClosable: true,
-    });
-    console.log("Acceso como invitado");
-    // Lógica adicional para iniciar sesión como invitado
+    // Implementa la lógica para el inicio de sesión como invitado
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <VStack spacing={4}>
-        {/* Correo Electrónico */}
-        <FormControl isInvalid={!!errors.email}>
-          <FormLabel>Correo Electrónico</FormLabel>
-          <Input
-            type="email"
-            placeholder="correo@ejemplo.com"
-            {...register("email", {
-              required: "Este campo es requerido",
-              pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: "Correo electrónico inválido",
-              },
-            })}
-          />
-          <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
-        </FormControl>
-
-        {/* Contraseña */}
-        <FormControl isInvalid={!!errors.password}>
-          <FormLabel>Contraseña</FormLabel>
-          <InputGroup>
-            <Input
-              type={showPassword ? "text" : "password"}
-              placeholder="********"
-              {...register("password", {
-                required: "Este campo es requerido",
-              })}
-            />
-            <InputRightElement>
-              <IconButton
-                aria-label={
-                  showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
-                }
-                icon={showPassword ? <FaEyeSlash /> : <FaEye />}
-                onClick={() => setShowPassword(!showPassword)}
-                variant="ghost"
+    <Container maxW="md" py={12}>
+      <VStack spacing={6}>
+        <Heading size="lg">Iniciar Sesión</Heading>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <VStack spacing={4} align="stretch">
+            {/* Correo Electrónico */}
+            <FormControl isInvalid={!!errors.email}>
+              <FormLabel>Correo Electrónico</FormLabel>
+              <Input
+                type="email"
+                placeholder="correo@ejemplo.com"
+                {...register("email", {
+                  required: "Este campo es requerido",
+                  pattern: {
+                    value: /\S+@\S+\.\S+/,
+                    message: "Correo electrónico inválido",
+                  },
+                })}
               />
-            </InputRightElement>
-          </InputGroup>
-          <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
-        </FormControl>
+              <FormErrorMessage>{errors.email?.message as string}</FormErrorMessage>
+            </FormControl>
 
-        {/* Opciones adicionales */}
-        <HStack justify="space-between" width="100%">
-          <Checkbox>Recordarme</Checkbox>
-          <Button variant="link" colorScheme="teal" size="sm">
-            ¿Olvidaste tu contraseña?
-          </Button>
-        </HStack>
+            {/* Contraseña */}
+            <FormControl isInvalid={!!errors.password}>
+              <FormLabel>Contraseña</FormLabel>
+              <InputGroup>
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="********"
+                  {...register("password", {
+                    required: "Este campo es requerido",
+                  })}
+                />
+                <InputRightElement>
+                  <IconButton
+                    aria-label={
+                      showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
+                    }
+                    icon={showPassword ? <FaEyeSlash /> : <FaEye />}
+                    onClick={() => setShowPassword(!showPassword)}
+                    variant="ghost"
+                  />
+                </InputRightElement>
+              </InputGroup>
+              <FormErrorMessage>{errors.password?.message as string}</FormErrorMessage>
+            </FormControl>
 
-        {/* Botón de Iniciar Sesión */}
-        <Button type="submit" colorScheme="teal" w="full" size="lg">
-          Iniciar Sesión
-        </Button>
+            {/* Opciones adicionales */}
+            <HStack justify="space-between" width="100%">
+              <Checkbox>Recordarme</Checkbox>
+              <Button variant="link" colorScheme="teal" size="sm">
+                ¿Olvidaste tu contraseña?
+              </Button>
+            </HStack>
 
-        {/* Separador */}
-        <Divider />
-
-        {/* Inicio de sesión con terceros */}
-        <Text fontSize="sm" textAlign="center">
-          O inicia sesión con
-        </Text>
-
-        <HStack spacing={4} width="full">
-          <Button
-            leftIcon={<FaGoogle />}
-            colorScheme="red"
-            variant="outline"
-            flex={1}
-          >
-            Google
-          </Button>
-          <Button
-            leftIcon={<FaGithub />}
-            colorScheme="gray"
-            variant="outline"
-            flex={1}
-          >
-            GitHub
-          </Button>
-        </HStack>
-
-        {/* Botón de Invitado */}
-        <Button
-          onClick={handleGuestLogin}
-          colorScheme="gray"
-          variant="outline"
-          w="full"
-          mt={4}
-        >
-          Continuar como invitado
-        </Button>
+            {/* Botón de Iniciar Sesión */}
+            <Button
+              type="submit"
+              colorScheme="teal"
+              w="full"
+              size="lg"
+              isLoading={isLoading}
+              loadingText="Iniciando sesión..."
+            >
+              Iniciar Sesión
+            </Button>
+          </VStack>
+        </form>
       </VStack>
-    </form>
+    </Container>
   );
 };
 
 export default LoginForm;
+
