@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Box,
   Button,
   FormControl,
   FormLabel,
@@ -51,13 +50,11 @@ const LoginForm = () => {
       isClosable: true,
     });
     console.log("Acceso como invitado");
-    // Lógica adicional para iniciar sesión como invitado
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <VStack spacing={4}>
-        {/* Correo Electrónico */}
         <FormControl isInvalid={!!errors.email}>
           <FormLabel>Correo Electrónico</FormLabel>
           <Input
@@ -74,7 +71,6 @@ const LoginForm = () => {
           <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
         </FormControl>
 
-        {/* Contraseña */}
         <FormControl isInvalid={!!errors.password}>
           <FormLabel>Contraseña</FormLabel>
           <InputGroup>
@@ -99,7 +95,6 @@ const LoginForm = () => {
           <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
         </FormControl>
 
-        {/* Opciones adicionales */}
         <HStack justify="space-between" width="100%">
           <Checkbox>Recordarme</Checkbox>
           <Button variant="link" colorScheme="teal" size="sm">
@@ -107,15 +102,12 @@ const LoginForm = () => {
           </Button>
         </HStack>
 
-        {/* Botón de Iniciar Sesión */}
         <Button type="submit" colorScheme="teal" w="full" size="lg">
           Iniciar Sesión
         </Button>
 
-        {/* Separador */}
         <Divider />
 
-        {/* Inicio de sesión con terceros */}
         <Text fontSize="sm" textAlign="center">
           O inicia sesión con
         </Text>
@@ -139,7 +131,6 @@ const LoginForm = () => {
           </Button>
         </HStack>
 
-        {/* Botón de Invitado */}
         <Button
           onClick={handleGuestLogin}
           colorScheme="gray"

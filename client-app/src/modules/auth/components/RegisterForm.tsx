@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Box,
   Button,
   FormControl,
   FormLabel,
@@ -48,7 +47,6 @@ const RegisterForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <VStack spacing={4}>
-        {/* Correo Electrónico */}
         <FormControl isInvalid={!!errors.email}>
           <FormLabel>Correo Electrónico</FormLabel>
           <Input
@@ -65,7 +63,6 @@ const RegisterForm = () => {
           <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
         </FormControl>
 
-        {/* Contraseña */}
         <FormControl isInvalid={!!errors.password}>
           <FormLabel>Contraseña</FormLabel>
           <InputGroup>
@@ -94,7 +91,6 @@ const RegisterForm = () => {
           <FormErrorMessage>{errors.password?.message}</FormErrorMessage>
         </FormControl>
 
-        {/* Confirmar Contraseña */}
         <FormControl isInvalid={!!errors.confirmPassword}>
           <FormLabel>Confirmar Contraseña</FormLabel>
           <InputGroup>
@@ -123,15 +119,12 @@ const RegisterForm = () => {
           <FormErrorMessage>{errors.confirmPassword?.message}</FormErrorMessage>
         </FormControl>
 
-        {/* Botón Registrar */}
         <Button type="submit" colorScheme="teal" w="full" size="lg">
           Registrarse
         </Button>
 
-        {/* Separador */}
         <Divider />
 
-        {/* Registro con Proveedores */}
         <Text fontSize="sm" textAlign="center">
           O regístrate con
         </Text>

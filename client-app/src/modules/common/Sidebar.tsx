@@ -107,7 +107,7 @@ const MobileNav = ({ onOpen }: { onOpen: () => void }) => {
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="space-between"
     >
-      {/* Botón para abrir el menú en móviles */}
+
       <HStack spacing="4" alignItems="center">
         <IconButton
           display={{ base: "flex", md: "none" }}
@@ -120,7 +120,6 @@ const MobileNav = ({ onOpen }: { onOpen: () => void }) => {
         <Bread />
       </HStack>
 
-      {/* Elementos en el lado derecho */}
       <HStack spacing="4" alignItems="center">
         <ThemeSwitcher />
         <IconButton
