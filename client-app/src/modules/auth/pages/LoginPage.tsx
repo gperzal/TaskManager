@@ -8,7 +8,7 @@ import {
   Link,
   useColorModeValue,
 } from "@chakra-ui/react";
-import LoginForm from "@/modules/auth/components/LoginForm";
+import LoginForm from "@auth/components/LoginForm";
 import NextLink from "next/link";
 
 const LoginPage = () => {
