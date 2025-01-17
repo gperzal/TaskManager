@@ -2,7 +2,21 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@modules/*": ["src/modules/*"],
+      "@dashboard/*": ["src/modules/dashboard/*"],
+      "@auth/*": ["src/modules/auth/*"],
+      "@backlog/*": ["src/modules/backlog/*"],
+      "@kanban/*": ["src/modules/kanban/*"],
+      "@project/*": ["src/modules/project/*"],
+      "@settings/*": ["src/modules/settings/*"],
+      "@sprints/*": ["src/modules/sprints/*"],
+      "@team/*": ["src/modules/team/*"],
+      "@components/*": ["src/components/*"],
+      "@home/*": ["src/components/home/*"],
+      "@common/*": ["src/components/common/*"],
+      "@styles/*": ["src/styles/*"],
+
     },
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],

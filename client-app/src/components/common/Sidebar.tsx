@@ -34,8 +34,8 @@ import { RiTeamLine } from "react-icons/ri";
 import { IoCalendarOutline } from "react-icons/io5";
 import { IconType } from "react-icons";
 import { useRouter } from "next/navigation";
-import ThemeSwitcher from "./ThemeSwitcher";
-import Bread from "./Breadcrumb";
+import ThemeSwitcher from "@common/ThemeSwitcher";
+import Bread from "@common/Breadcrumb";
 
 interface LinkItemProps {
   name: string;
@@ -162,8 +162,6 @@ const MobileNav = ({ onOpen }: { onOpen: () => void }) => {
     </Flex>
   );
 };
-
-
 
 const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

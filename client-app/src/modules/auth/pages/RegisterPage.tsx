@@ -8,7 +8,7 @@ import {
   Link,
   useColorModeValue,
 } from "@chakra-ui/react";
-import RegisterForm from "@/modules/auth/components/RegisterForm";
+import RegisterForm from "@auth/components/RegisterForm";
 import NextLink from "next/link";
 
 const RegisterPage = () => {
