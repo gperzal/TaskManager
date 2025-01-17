@@ -19,18 +19,25 @@ import {
 import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+
+interface LoginFormValues {
+  email: string;
+  password: string;
+}
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const toast = useToast();
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<LoginFormValues>();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: LoginFormValues) => {
     console.log("Formulario enviado", data);
     toast({
       title: "Inicio de sesión exitoso.",
@@ -46,10 +53,11 @@ const LoginForm = () => {
       title: "Inicio como invitado.",
       description: "Has iniciado sesión como invitado.",
       status: "info",
-      duration: 3000,
+      duration: 2000,
       isClosable: true,
     });
-    console.log("Acceso como invitado");
+
+    router.push("/dashboard");
   };
 
   return (

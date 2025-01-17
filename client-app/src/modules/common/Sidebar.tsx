@@ -43,6 +43,11 @@ interface LinkItemProps {
   route: string;
 }
 
+interface SidebarContentProps {
+  onClose: () => void;
+  display?: { base: string; md: string }; // Agregamos la propiedad `display` como opcional
+}
+
 const LinkItems: Array<LinkItemProps> = [
   { name: "Dashboard", icon: FiHome, route: "/dashboard" },
   { name: "Project", icon: GoProject, route: "/dashboard/project" },
@@ -53,7 +58,7 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "Configuración", icon: FiSettings, route: "/dashboard/settings" },
 ];
 
-const SidebarContent = ({ onClose }: { onClose: () => void }) => {
+const SidebarContent = ({ onClose, display }: SidebarContentProps) => {
   const router = useRouter();
 
   return (
@@ -64,6 +69,7 @@ const SidebarContent = ({ onClose }: { onClose: () => void }) => {
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
+      display={display} // Usamos la propiedad `display` aquí
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontWeight="bold">
@@ -107,7 +113,6 @@ const MobileNav = ({ onOpen }: { onOpen: () => void }) => {
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="space-between"
     >
-
       <HStack spacing="4" alignItems="center">
         <IconButton
           display={{ base: "flex", md: "none" }}
@@ -157,6 +162,8 @@ const MobileNav = ({ onOpen }: { onOpen: () => void }) => {
     </Flex>
   );
 };
+
+
 
 const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();

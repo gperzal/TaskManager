@@ -19,6 +19,12 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash, FaGoogle, FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 
+interface RegisterFormValues {
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
 const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -29,9 +35,9 @@ const RegisterForm = () => {
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm();
+  } = useForm<RegisterFormValues>();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: RegisterFormValues) => {
     console.log("Formulario enviado", data);
     toast({
       title: "Cuenta creada.",
