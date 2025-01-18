@@ -45,7 +45,7 @@ interface LinkItemProps {
 
 interface SidebarContentProps {
   onClose: () => void;
-  display?: { base: string; md: string }; // Agregamos la propiedad `display` como opcional
+  display?: { base: string; md: string };
 }
 
 const LinkItems: Array<LinkItemProps> = [
@@ -69,7 +69,7 @@ const SidebarContent = ({ onClose, display }: SidebarContentProps) => {
       w={{ base: "full", md: 60 }}
       pos="fixed"
       h="full"
-      display={display} // Usamos la propiedad `display` aquí
+      display={display}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontWeight="bold">
@@ -167,7 +167,7 @@ const Sidebar = ({ children }: { children: React.ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box minH="100vh" bg={useColorModeValue("white", "gray.900")}>
       <SidebarContent
         onClose={onClose}
         display={{ base: "none", md: "block" }}

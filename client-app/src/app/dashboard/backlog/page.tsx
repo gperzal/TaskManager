@@ -1,3 +1,3 @@
-import BacklogPage from "@/modules/backlog/pages/BacklogPage";
+import BacklogPage from "@backlog/pages/BacklogPage";
 
 export default BacklogPage;

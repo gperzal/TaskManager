@@ -19,7 +19,6 @@ export default function RootLayout({
       <body>
         <ChakraProvider theme={theme}>
           <Flex direction="column" minH="100vh">
-         
             {!isDashboard && <Navbar />}
             <Box as="main" flex="1">
               {children}

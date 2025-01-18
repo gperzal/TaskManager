@@ -1,3 +1,3 @@
-import SettingsPage from "@/modules/settings/pages/SettingsPage";
+import SettingsPage from "@settings/pages/SettingsPage";
 
 export default SettingsPage;

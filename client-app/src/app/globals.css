@@ -15,22 +15,30 @@
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--chakra-colors-gray-900);
+  background: var(--chakra-colors-white);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   box-sizing: border-box;
 }
 
-
-html.light {
-  background-color: #f7fafc;
-  color: #1a202c;
+html.dark {
+  background-color: var(--chakra-colors-gray-900);
+  color: var(--chakra-colors-gray-100);
 }
 
-html.dark {
-  background-color: #1a202c;
-  color: #f7fafc;
+html.light {
+  background-color: var(--chakra-colors-white);
+  color: var(--chakra-colors-gray-900);
+}
+
+.ql-editor::before {
+  color: var(--chakra-colors-gray-400) !important; 
+  font-style: italic;
+}
+
+.ql-container.ql-snow:focus-within {
+  border-color: var(--chakra-colors-blue-500) !important; 
+  box-shadow: 0 0 0 1px var(--chakra-colors-blue-500) !important;
 }
