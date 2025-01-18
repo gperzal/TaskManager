@@ -1,3 +1,3 @@
-import KanbanPage from "@/modules/kanban/pages/KanbanPage";
+import KanbanPage from "@kanban/pages/KanbanPage";
 
 export default KanbanPage;

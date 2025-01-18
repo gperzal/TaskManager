@@ -7,7 +7,7 @@ import NavigationLinks from "@dashboard/components/NavigationLinks";
 
 export default function DashboardPage() {
   return (
-    <Box>
+    <Box >
       <WelcomeMessage />
       <SummaryGrid />
       <NavigationLinks />

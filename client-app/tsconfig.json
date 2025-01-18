@@ -3,6 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
+      "@css/*": ["src/app/*"],
       "@modules/*": ["src/modules/*"],
       "@dashboard/*": ["src/modules/dashboard/*"],
       "@auth/*": ["src/modules/auth/*"],

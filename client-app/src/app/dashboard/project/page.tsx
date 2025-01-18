@@ -1,3 +1,3 @@
-import ProjectPage from "@/modules/project/pages/ProjectPage";
+import ProjectPage from "@project/pages/ProjectPage";
 
 export default ProjectPage;
