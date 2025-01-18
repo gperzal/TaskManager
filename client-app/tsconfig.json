@@ -2,25 +2,61 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@css/*": ["src/app/*"],
-      "@modules/*": ["src/modules/*"],
-      "@dashboard/*": ["src/modules/dashboard/*"],
-      "@auth/*": ["src/modules/auth/*"],
-      "@backlog/*": ["src/modules/backlog/*"],
-      "@kanban/*": ["src/modules/kanban/*"],
-      "@project/*": ["src/modules/project/*"],
-      "@settings/*": ["src/modules/settings/*"],
-      "@sprints/*": ["src/modules/sprints/*"],
-      "@team/*": ["src/modules/team/*"],
-      "@components/*": ["src/components/*"],
-      "@home/*": ["src/components/home/*"],
-      "@common/*": ["src/components/common/*"],
-      "@styles/*": ["src/styles/*"],
-
+      "@/*": [
+        "src/*"
+      ],
+      "@css/*": [
+        "src/app/*"
+      ],
+      "@modules/*": [
+        "src/modules/*"
+      ],
+      "@dashboard/*": [
+        "src/modules/dashboard/*"
+      ],
+      "@auth/*": [
+        "src/modules/auth/*"
+      ],
+      "@backlog/*": [
+        "src/modules/backlog/*"
+      ],
+      "@kanban/*": [
+        "src/modules/kanban/*"
+      ],
+      "@project/*": [
+        "src/modules/project/*"
+      ],
+      "@settings/*": [
+        "src/modules/settings/*"
+      ],
+      "@sprints/*": [
+        "src/modules/sprints/*"
+      ],
+      "@team/*": [
+        "src/modules/team/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@home/*": [
+        "src/components/home/*"
+      ],
+      "@common/*": [
+        "src/components/common/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],     
     },
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "ES2022",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -38,6 +74,13 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

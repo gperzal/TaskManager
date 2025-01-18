@@ -1,0 +1,137 @@
+[
+    {
+        "id": "1",
+        "name": "Project Alpha",
+        "status": "En Proceso",
+        "progress": 65,
+        "currentSprint": "Sprint 3",
+        "description": "Este es el proyecto Alpha.",
+        "startDate": "2023-01-01",
+        "endDate": "2023-12-31",
+        "priority": "Alta",
+        "tasks": [
+            {
+                "id": 1,
+                "title": "Módulo de Autenticación",
+                "type": "Tarea",
+                "status": "En progreso",
+                "assignee": {
+                    "name": "John Doe",
+                    "avatar": "https://bit.ly/dan-abramov"
+                },
+                "priority": "Alta",
+                "expanded": true,
+                "subtasks": [
+                    {
+                        "id": 2,
+                        "title": "Implementar registro de usuarios",
+                        "type": "Subtarea",
+                        "status": "Por hacer",
+                        "assignee": {
+                            "name": "Jane Smith",
+                            "avatar": "https://bit.ly/ryan-florence"
+                        },
+                        "priority": "Baja"
+                    },
+                    {
+                        "id": 3,
+                        "title": "Implementar inicio de sesión",
+                        "type": "Subtarea",
+                        "status": "Por hacer",
+                        "assignee": {
+                            "name": "Jane Smith",
+                            "avatar": "https://bit.ly/ryan-florence"
+                        },
+                        "priority": "Baja"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "title": "Módulo de Notificaciones",
+                "type": "Tarea",
+                "status": "Por hacer",
+                "assignee": {
+                    "name": "John Doe",
+                    "avatar": "https://bit.ly/dan-abramov"
+                },
+                "priority": "Alta",
+                "expanded": true,
+                "subtasks": [
+                    {
+                        "id": 1,
+                        "title": "Implementar notificaciones por correo electrónico",
+                        "type": "Subtarea",
+                        "status": "Por hacer",
+                        "assignee": {
+                            "name": "Jane Smith",
+                            "avatar": "https://bit.ly/ryan-florence"
+                        },
+                        "priority": "Baja"
+                    },
+                    {
+                        "id": 2,
+                        "title": "Implementar notificaciones push",
+                        "type": "Subtarea",
+                        "status": "Por hacer",
+                        "assignee": {
+                            "name": "Jane Smith",
+                            "avatar": "https://bit.ly/ryan-florence"
+                        },
+                        "priority": "Baja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "name": "Project Beta",
+        "status": "Planificación",
+        "progress": 10,
+        "currentSprint": "Sprint 1",
+        "description": "Este es el proyecto Beta.",
+        "startDate": "2023-02-01",
+        "endDate": "2023-06-30",
+        "priority": "Media",
+        "tasks": [
+            {
+                "id": 1,
+                "title": "Módulo de Gestión de Proyectos",
+                "type": "Tarea",
+                "status": "Por hacer",
+                "assignee": {
+                    "name": "John Doe",
+                    "avatar": "https://bit.ly/dan-abramov"
+                },
+                "priority": "Alta",
+                "expanded": true,
+                "subtasks": [
+                    {
+                        "id": 2,
+                        "title": "Implementar gestión de proyectos",
+                        "type": "Subtarea",
+                        "status": "Por hacer",
+                        "assignee": {
+                            "name": "Jane Smith",
+                            "avatar": "https://bit.ly/ryan-florence"
+                        },
+                        "priority": "Baja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Project Gamma",
+        "status": "Completo",
+        "progress": 100,
+        "currentSprint": "Sprint 5",
+        "description": "Este es el proyecto Gamma.",
+        "startDate": "2022-03-01",
+        "endDate": "2022-11-30",
+        "priority": "Baja",
+        "tasks": []
+    }
+]
