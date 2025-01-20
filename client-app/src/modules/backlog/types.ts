@@ -4,28 +4,34 @@ export interface Assignee {
   avatar: string;
 }
 
+export interface AcceptanceCriteria {
+  id: string; 
+  description: string;
+  isCompleted: boolean;
+}
+
 export interface Subtask {
-  id: number;
+  id: string;
   title: string;
-  description: string; 
+  description?: string; 
   type: string; 
   status: string; 
   assignee: Assignee;
   priority: string; 
-  acceptanceCriteria?: { id: number; description: string; isCompleted: boolean }[];
+  acceptanceCriteria?: AcceptanceCriteria[];
 }
 
 export interface Task {
-  id: number;
+  id: string;
   title: string;
-  description: string;
+  description?: string;
   type: string; 
   status: string; 
   assignee: Assignee;
   priority: string; 
   expanded?: boolean;
   subtasks?: Subtask[];
-  acceptanceCriteria?: { id: number; description: string; isCompleted: boolean }[];
+  acceptanceCriteria?: AcceptanceCriteria[];
 }
 
 export interface Filters {
@@ -36,6 +42,8 @@ export interface Filters {
   priority: string; 
   type?: string; 
 }
+
+
 
 
 export interface BacklogTableProps {
@@ -53,7 +61,7 @@ export interface Project {
   startDate: string; 
   endDate: string; 
   priority: string; 
-  tasks?: Task[]; 
+  tasks: Task[];
 }
 
 

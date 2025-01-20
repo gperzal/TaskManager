@@ -27,6 +27,7 @@ export default function BacklogFilters({
         value={filters.project}
         onChange={(e) => setFilters({ ...filters, project: e.target.value })}
         maxW="250px"
+        placeholder="Selecciona un proyecto"
       >
         {projects.map((project) => (
           <option key={project.id} value={project.id}>

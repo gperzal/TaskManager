@@ -9,10 +9,9 @@
         "startDate": "2023-01-01",
         "endDate": "2023-12-31",
         "priority": "Alta",
-        "teamMembers": [],
         "tasks": [
             {
-                "id": 1,
+                "id": "1",
                 "title": "Módulo de Autenticación",
                 "type": "Tarea",
                 "status": "En progreso",
@@ -25,7 +24,7 @@
                 "expanded": true,
                 "subtasks": [
                     {
-                        "id": 2,
+                        "id": "2",
                         "title": "Implementar registro de usuarios",
                         "type": "Subtarea",
                         "status": "Por hacer",
@@ -54,7 +53,7 @@
                         ]
                     },
                     {
-                        "id": 3,
+                        "id": "3",
                         "title": "Implementar inicio de sesión",
                         "type": "Subtarea",
                         "status": "Por hacer",
@@ -85,7 +84,7 @@
                 ]
             },
             {
-                "id": 2,
+                "id": "2",
                 "title": "Módulo de Notificaciones",
                 "type": "Tarea",
                 "status": "Por hacer",
@@ -98,7 +97,7 @@
                 "expanded": true,
                 "subtasks": [
                     {
-                        "id": 1,
+                        "id": "1",
                         "title": "Implementar notificaciones por correo electrónico",
                         "type": "Subtarea",
                         "status": "Por hacer",
@@ -122,7 +121,7 @@
                         ]
                     },
                     {
-                        "id": 2,
+                        "id": "2",
                         "title": "Implementar notificaciones push",
                         "type": "Subtarea",
                         "status": "Por hacer",
@@ -161,7 +160,7 @@
         "priority": "Media",
         "tasks": [
             {
-                "id": 1,
+                "id": "1",
                 "title": "Módulo de Gestión de Proyectos",
                 "type": "Tarea",
                 "status": "Por hacer",
@@ -173,7 +172,7 @@
                 "expanded": true,
                 "subtasks": [
                     {
-                        "id": 2,
+                        "id": "2",
                         "title": "Implementar gestión de proyectos",
                         "type": "Subtarea",
                         "status": "Por hacer",
