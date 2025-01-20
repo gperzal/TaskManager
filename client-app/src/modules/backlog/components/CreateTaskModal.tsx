@@ -13,84 +13,74 @@ import {
   FormLabel,
   Input,
   Select,
-  Textarea,
   VStack,
 } from "@chakra-ui/react";
+import { QuillEditor } from "@/components/common/QuillEditor";
+import { useState } from "react";
+import { CreateTaskModalProps } from "@backlog/types";
 
-export default function CreateTaskModal({ isOpen, onClose }) {
+export default function CreateTaskModal({
+  isOpen,
+  onClose,
+}: CreateTaskModalProps) {
+  const [description, setDescription] = useState("");
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="xl">
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Create New Task</ModalHeader>
+        <ModalHeader>Crear Nueva Tarea</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <VStack spacing={4}>
             <FormControl isRequired>
-              <FormLabel>Title</FormLabel>
-              <Input placeholder="Enter task title" />
+              <FormLabel>Título</FormLabel>
+              <Input placeholder="Ingresa el título de la tarea" />
             </FormControl>
-
             <FormControl>
-              <FormLabel>Description</FormLabel>
-              <Textarea placeholder="Enter task description" />
+              <FormLabel>Descripción</FormLabel>
+              <QuillEditor value={description} onChange={setDescription} />
             </FormControl>
-
             <FormControl isRequired>
-              <FormLabel>Type</FormLabel>
+              <FormLabel>Estado</FormLabel>
               <Select>
-                <option value="module">Module</option>
-                <option value="task">Task</option>
+                <option value="todo">Por Hacer</option>
+                <option value="in-progress">En Proceso</option>
+                <option value="done">Finalizado</option>
               </Select>
             </FormControl>
-
             <FormControl isRequired>
-              <FormLabel>Status</FormLabel>
+              <FormLabel>Prioridad</FormLabel>
               <Select>
-                <option value="todo">To Do</option>
-                <option value="in-progress">In Progress</option>
-                <option value="done">Done</option>
+                <option value="high">Alta</option>
+                <option value="medium">Media</option>
+                <option value="low">Baja</option>
               </Select>
             </FormControl>
-
-            <FormControl isRequired>
-              <FormLabel>Priority</FormLabel>
-              <Select>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-              </Select>
-            </FormControl>
-
             <FormControl>
-              <FormLabel>Parent Task</FormLabel>
+              <FormLabel>Tarea Principal</FormLabel>
               <Select>
-                <option value="">None (Top Level)</option>
+                <option value="">Ninguna (Nivel Superior)</option>
                 <option value="1">Módulo de Autenticación</option>
-                {/* Add more options dynamically based on available modules */}
               </Select>
             </FormControl>
-
             <FormControl>
-              <FormLabel>Assignee</FormLabel>
+              <FormLabel>Asignado a</FormLabel>
               <Select>
-                <option value="">Unassigned</option>
+                <option value="">Sin Asignar</option>
                 <option value="1">John Doe</option>
                 <option value="2">Jane Smith</option>
-                {/* Add more team members */}
               </Select>
             </FormControl>
           </VStack>
         </ModalBody>
-
         <ModalFooter>
           <Button variant="ghost" mr={3} onClick={onClose}>
-            Cancel
+            Cancelar
           </Button>
-          <Button colorScheme="teal">Create Task</Button>
+          <Button colorScheme="teal">Crear Tarea</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
   );
 }
-

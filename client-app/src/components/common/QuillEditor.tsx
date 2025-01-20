@@ -42,11 +42,17 @@ export const QuillEditor = ({ value, onChange }: QuillEditorProps) => {
 
   React.useEffect(() => {
     if (quill) {
+      if (quill.root.innerHTML !== value) {
+        quill.clipboard.dangerouslyPasteHTML(value);
+      }
 
-      quill.clipboard.dangerouslyPasteHTML(value);
       quill.on("text-change", () => {
-        onChange(quill.root.innerHTML);
+        const newContent = quill.root.innerHTML;
+        if (newContent !== value) {
+          onChange(newContent);
+        }
       });
+
       const editorContainer = quill.root.parentElement as HTMLElement;
       const toolbar = editorContainer.previousElementSibling as HTMLElement;
 
@@ -86,7 +92,7 @@ export const QuillEditor = ({ value, onChange }: QuillEditorProps) => {
           });
       }
     }
-  }, [quill, colorMode, onChange, value]);
+  }, [quill, colorMode, value, onChange]);
 
   return (
     <div style={{ width: "100%", minHeight: "150px" }}>

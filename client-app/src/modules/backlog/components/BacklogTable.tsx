@@ -25,12 +25,29 @@ import {
   FiMoreVertical,
   FiEdit2,
   FiTrash2,
+  FiPlus,
 } from "react-icons/fi";
 import { useState, ReactNode, Fragment } from "react";
+import TaskModal from "@backlog/components/TaskModal";
 import { Task, BacklogTableProps } from "@backlog/types";
 
 export default function BacklogTable({ filters, tasks }: BacklogTableProps) {
   const [expandedModules, setExpandedModules] = useState<number[]>([]);
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCreatingSubtask, setIsCreatingSubtask] = useState(false);
+
+  const openModal = (task: Task | null, isSubtask = false) => {
+    setSelectedTask(task);
+    setIsCreatingSubtask(isSubtask);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedTask(null);
+    setIsModalOpen(false);
+    setIsCreatingSubtask(false);
+  };
 
   const toggleExpand = (taskId: number) => {
     setExpandedModules((prev) =>
@@ -38,7 +55,6 @@ export default function BacklogTable({ filters, tasks }: BacklogTableProps) {
         ? prev.filter((id) => id !== taskId)
         : [...prev, taskId]
     );
-    console.log("Expanded modules:", expandedModules);
   };
 
   const rowBgColorModule = useColorModeValue("gray.100", "gray.800");
@@ -129,7 +145,17 @@ export default function BacklogTable({ filters, tasks }: BacklogTableProps) {
                 size="sm"
               />
               <MenuList>
-                <MenuItem icon={<FiEdit2 />}>Editar</MenuItem>
+                {task.type === "Tarea" && (
+                  <MenuItem
+                    icon={<FiPlus />}
+                    onClick={() => openModal(task, true)}
+                  >
+                    Agregar Subtarea
+                  </MenuItem>
+                )}
+                <MenuItem icon={<FiEdit2 />} onClick={() => openModal(task)}>
+                  Editar
+                </MenuItem>
                 <MenuItem icon={<FiTrash2 />} color="red.500">
                   Eliminar
                 </MenuItem>
@@ -180,6 +206,34 @@ export default function BacklogTable({ filters, tasks }: BacklogTableProps) {
           )}
         </Tbody>
       </Table>
+      <TaskModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        isCreatingSubtask={isCreatingSubtask} 
+        task={
+          isCreatingSubtask
+            ? {
+                id: Date.now(),
+                title: "",
+                description: "",
+                type: "Subtarea",
+                status: "Por Hacer",
+                assignee: { name: "", avatar: "" },
+                priority: "Baja",
+                expanded: false,
+                subtasks: [],
+                acceptanceCriteria: [],
+              }
+            : selectedTask
+        }
+        onSave={(updatedTask) => {
+          if (isCreatingSubtask && selectedTask) {
+            console.log("Subtarea creada:", updatedTask);
+          } else {
+            console.log("Tarea actualizada:", updatedTask);
+          }
+        }}
+      />
     </Box>
   );
 }

@@ -19,9 +19,8 @@ import {
   Spinner,
   useToast,
 } from "@chakra-ui/react";
-import { QuillEditor } from "@project/components/QuillEditor";
+import { QuillEditor } from "@/components/common/QuillEditor";
 import { ProjectData, CreateProjectModalProps } from "@project/types";
-
 
 export default function CreateProjectModal({
   isOpen,

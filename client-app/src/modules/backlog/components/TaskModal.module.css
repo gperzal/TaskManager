@@ -1,0 +1,13 @@
+.expandableBox {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+  
+  .expandableBox.expanded {
+    max-height: 500px;
+  }
+  
+  .expandableBox.collapsed {
+    max-height: 0;
+  }
+  

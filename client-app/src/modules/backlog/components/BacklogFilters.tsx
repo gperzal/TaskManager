@@ -23,7 +23,6 @@ export default function BacklogFilters({
 }: BacklogFiltersProps) {
   return (
     <HStack spacing={4} flex="1">
-      {/* Selector de proyecto */}
       <Select
         value={filters.project}
         onChange={(e) => setFilters({ ...filters, project: e.target.value })}
@@ -35,8 +34,6 @@ export default function BacklogFilters({
           </option>
         ))}
       </Select>
-
-      {/* Buscador */}
       <InputGroup maxW="300px">
         <InputLeftElement pointerEvents="none">
           <FiSearch color="gray.300" />
@@ -49,8 +46,6 @@ export default function BacklogFilters({
           }
         />
       </InputGroup>
-
-      {/* Estado */}
       <Select
         value={filters.status}
         onChange={(e) => setFilters({ ...filters, status: e.target.value })}
@@ -61,8 +56,6 @@ export default function BacklogFilters({
         <option value="in-progress">En Progreso</option>
         <option value="done">Finalizado</option>
       </Select>
-
-      {/* Prioridad */}
       <Select
         value={filters.priority}
         onChange={(e) => setFilters({ ...filters, priority: e.target.value })}

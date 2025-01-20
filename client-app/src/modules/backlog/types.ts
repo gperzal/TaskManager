@@ -7,30 +7,34 @@ export interface Assignee {
 export interface Subtask {
   id: number;
   title: string;
-  type: string; // Ejemplo: "Subtarea"
-  status: string; // Ejemplo: "Por hacer", "Finalizado"
+  description: string; 
+  type: string; 
+  status: string; 
   assignee: Assignee;
-  priority: string; // Ejemplo: "Alta", "Media", "Baja"
+  priority: string; 
+  acceptanceCriteria?: { id: number; description: string; isCompleted: boolean }[];
 }
 
 export interface Task {
   id: number;
   title: string;
-  type: string; // Ejemplo: "Tarea"
-  status: string; // Ejemplo: "En progreso"
+  description: string;
+  type: string; 
+  status: string; 
   assignee: Assignee;
-  priority: string; // Ejemplo: "Alta", "Media", "Baja"
+  priority: string; 
   expanded?: boolean;
   subtasks?: Subtask[];
+  acceptanceCriteria?: { id: number; description: string; isCompleted: boolean }[];
 }
 
 export interface Filters {
-  project: string; // ID del proyecto seleccionado
-  searchTerm: string; // Texto de búsqueda
-  status: string; // Ejemplo: "all", "done", "in-progress"
-  assignee: string; // Ejemplo: "all", "me", "unassigned"
-  priority: string; // Ejemplo: "all", "high", "medium", "low"
-  type?: string; // Ejemplo: "Tarea", "Subtarea"
+  project: string; 
+  searchTerm: string; 
+  status: string; 
+  assignee: string; 
+  priority: string; 
+  type?: string; 
 }
 
 
@@ -42,12 +46,29 @@ export interface BacklogTableProps {
 export interface Project {
   id: string;
   name: string;
-  status: string; // Ejemplo: "En Proceso", "Planificación"
-  progress: number; // Porcentaje completado
-  currentSprint: string; // Ejemplo: "Sprint 3"
-  description: string; // Descripción del proyecto
-  startDate: string; // Fecha de inicio
-  endDate: string; // Fecha de fin
-  priority: string; // Ejemplo: "Alta", "Media", "Baja"
-  tasks?: Task[]; // Tareas asociadas al proyecto
+  status: string; 
+  progress: number;
+  currentSprint: string; 
+  description: string; 
+  startDate: string; 
+  endDate: string; 
+  priority: string; 
+  tasks?: Task[]; 
+}
+
+
+// Types for TaskModal.tsx
+export interface TaskModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  task: Task | null;
+  isCreatingSubtask: boolean; 
+  onSave: (updatedTask: Task) => void;
+}
+
+
+// Types for CreateTaskModal.tsx
+export interface CreateTaskModalProps {
+  isOpen: boolean;
+  onClose: () => void;
 }
