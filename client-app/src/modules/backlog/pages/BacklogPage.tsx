@@ -13,12 +13,17 @@ import { FiPlus } from "react-icons/fi";
 import BacklogTable from "@backlog/components/BacklogTable";
 import CreateTaskModal from "@backlog/components/CreateTaskModal";
 import BacklogFilters from "@backlog/components/BacklogFilters";
+import { Project, Filters } from "@backlog/types";
 import data from "@utils/data.json";
 
 export default function BacklogPage() {
-  const projects = data;
+
+  const projects: Project[] = data;
+
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [filters, setFilters] = useState({
+
+
+  const [filters, setFilters] = useState<Filters>({
     project: projects[0]?.id || "",
     status: "all",
     assignee: "all",

@@ -32,7 +32,7 @@ import TaskModal from "@backlog/components/TaskModal";
 import { Task, BacklogTableProps } from "@backlog/types";
 
 export default function BacklogTable({ filters, tasks }: BacklogTableProps) {
-  const [expandedModules, setExpandedModules] = useState<number[]>([]);
+  const [expandedModules, setExpandedModules] = useState<string[]>([]);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isCreatingSubtask, setIsCreatingSubtask] = useState(false);
@@ -49,7 +49,7 @@ export default function BacklogTable({ filters, tasks }: BacklogTableProps) {
     setIsCreatingSubtask(false);
   };
 
-  const toggleExpand = (taskId: number) => {
+  const toggleExpand = (taskId: string) => {
     setExpandedModules((prev) =>
       prev.includes(taskId)
         ? prev.filter((id) => id !== taskId)
@@ -209,11 +209,11 @@ export default function BacklogTable({ filters, tasks }: BacklogTableProps) {
       <TaskModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        isCreatingSubtask={isCreatingSubtask} 
+        isCreatingSubtask={isCreatingSubtask}
         task={
           isCreatingSubtask
             ? {
-                id: Date.now(),
+                id: Date.now().toString(),
                 title: "",
                 description: "",
                 type: "Subtarea",

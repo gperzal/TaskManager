@@ -25,7 +25,7 @@ import {
 } from "@chakra-ui/react";
 import { FiPlus, FiTrash, FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { QuillEditor } from "@/components/common/QuillEditor";
-import { Task, TaskModalProps } from "@backlog/types";
+import { Task, TaskModalProps, AcceptanceCriteria } from "@backlog/types";
 import styles from "./TaskModal.module.css";
 
 export default function TaskModal({
@@ -45,7 +45,7 @@ export default function TaskModal({
   useEffect(() => {
     if (isCreatingSubtask) {
       setEditedTask({
-        id: Date.now(),
+        id: Date.now().toString(),
         title: "",
         description: "",
         type: "Subtarea",
@@ -96,8 +96,8 @@ export default function TaskModal({
 
   const addCriteria = () => {
     if (editedTask && (editedTask.acceptanceCriteria?.length || 0) < 8) {
-      const newCriteria = {
-        id: Date.now(),
+      const newCriteria: AcceptanceCriteria = {
+        id: Date.now().toString(),
         description: "",
         isCompleted: false,
       };
