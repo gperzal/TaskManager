@@ -1,8 +1,16 @@
 import request from 'supertest';
-import mongoose from 'mongoose';
-import { app } from '../src/app.js';
+import express from 'express';
 import User from '../src/models/userModel.js';
+import cors from 'cors';
+import authRoutes from '../src/routes/authRoutes.js';
 import { connectDB, disconnectDB } from '../src/config/db.js';
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+app.use('/api/auth',authRoutes);
+
 
 describe('Authentication Tests', () => {
     beforeAll(async () => {

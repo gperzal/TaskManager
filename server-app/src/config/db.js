@@ -1,36 +1,25 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-dotenv.config({
-    path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
-});
+dotenv.config();
 
-let connection = null;
-
-export const connectDB = async () => {
+const connectDB = async () => {
     try {
-        if (connection) return connection;
-        
-        connection = await mongoose.connect(process.env.MONGO_URI, {
-            serverSelectionTimeoutMS: 20000,
-            socketTimeoutMS: 45000,
-            useUnifiedTopology: true
-        });
-        
+        await mongoose.connect(process.env.MONGO_URI);
         console.log('MongoDB Connected');
-        return connection;
     } catch (err) {
-        console.error('Failed to connect to MongoDB:', err.message);
+        console.error('Failed to connect to MongoDB', err.message);
+        process.exit(1);
+    }
+};
+const disconnectDB = async () => {
+    try {
+        await mongoose.disconnect();
+        console.log('MongoDB Discconnected');
+    } catch (err) {
+        console.error('Failed to disconnect to MongoDB', err.message);
         process.exit(1);
     }
 };
 
-export const disconnectDB = async () => {
-    try {
-        await mongoose.disconnect();
-        connection = null;
-        console.log('MongoDB Disconnected');
-    } catch (err) {
-        console.error('Failed to disconnect from MongoDB:', err.message);
-    }
-};
+export { connectDB, disconnectDB };

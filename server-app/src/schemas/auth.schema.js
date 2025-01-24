@@ -34,7 +34,7 @@ export const loginSchema = z.object({
   email: z.string({
     required_error: "El email es requerido",
   })
-    .min(1, "El email es requerido")  // Primero validamos que no esté vacío
+    .min(1, "El email es requerido") 
     .email("El formato del email no es válido")
     .toLowerCase()
     .trim(),
