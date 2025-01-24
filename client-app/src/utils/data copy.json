@@ -1,0 +1,222 @@
+[
+    {
+        "id": "1",
+        "name": "Project Alpha",
+        "status": "En Proceso",
+        "progress": 65,
+        "currentSprint": "Sprint 3",
+        "sprint": [
+            {
+            "id": "1",
+            "name": "Sprint 1",
+            "startDate": "2023-01-01",
+            "endDate": "2023-03-31",
+            "tasks": [
+            ]
+        }],
+        "sprints":  5,
+        "description": "<p>Este es el proyecto <strong>Alpha</strong>. Este proyecto incluye múltiples módulos para la autenticación y las notificaciones.</p>",
+        "startDate": "2023-01-01",
+        "endDate": "2023-12-31",
+        "priority": "Alta",
+        "owner": "John Doe",
+        "teamWork": [
+            {
+                "name": "Jane Smith",
+                "avatar": "https://bit.ly/ryan-florence"
+            },
+            {
+                "name": "John Doe",
+                "avatar": "https://bit.ly/dan-abramov"
+            }
+        ],
+        "tasks": [
+            {
+                "id": "1",
+                "title": "Módulo de Autenticación",
+                "type": "Tarea",
+                "status": "En progreso",
+                "description": "<p>El módulo de autenticación es esencial para garantizar la seguridad de los usuarios.</p>",
+                "assignee": {
+                    "name": "John Doe",
+                    "avatar": "https://bit.ly/dan-abramov"
+                },
+                "priority": "Alta",
+                "expanded": true,
+                "subtasks": [
+                    {
+                        "id": "2",
+                        "title": "Implementar registro de usuarios",
+                        "type": "Subtarea",
+                        "status": "Por hacer",
+                        "description": "<p>Permitir que los usuarios se registren utilizando su correo electrónico y contraseña.</p>",
+                        "assignee": {
+                            "name": "Jane Smith",
+                            "avatar": "https://bit.ly/ryan-florence"
+                        },
+                        "priority": "Baja",
+                        "acceptanceCriteria": [
+                            {
+                                "id": "1",
+                                "description": "El usuario puede ingresar un correo electrónico válido.",
+                                "isCompleted": false
+                            },
+                            {
+                                "id": "2",
+                                "description": "La contraseña debe cumplir con las reglas de seguridad.",
+                                "isCompleted": false
+                            },
+                            {
+                                "id": "3",
+                                "description": "El sistema envía un correo de verificación al usuario.",
+                                "isCompleted": false
+                            }
+                        ]
+                    },
+                    {
+                        "id": "3",
+                        "title": "Implementar inicio de sesión",
+                        "type": "Subtarea",
+                        "status": "Por hacer",
+                        "description": "<p>Habilitar a los usuarios autenticarse mediante sus credenciales registradas.</p>",
+                        "assignee": {
+                            "name": "Jane Smith",
+                            "avatar": "https://bit.ly/ryan-florence"
+                        },
+                        "priority": "Baja",
+                        "acceptanceCriteria": [
+                            {
+                                "id": "1",
+                                "description": "El usuario puede ingresar su correo electrónico y contraseña.",
+                                "isCompleted": false
+                            },
+                            {
+                                "id": "2",
+                                "description": "El sistema valida las credenciales ingresadas.",
+                                "isCompleted": false
+                            },
+                            {
+                                "id": "3",
+                                "description": "El usuario es redirigido a su panel principal tras iniciar sesión.",
+                                "isCompleted": false
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "title": "Módulo de Notificaciones",
+                "type": "Tarea",
+                "status": "Por hacer",
+                "description": "<p>El módulo de notificaciones proporciona alertas en tiempo real.</p>",
+                "assignee": {
+                    "name": "John Doe",
+                    "avatar": "https://bit.ly/dan-abramov"
+                },
+                "priority": "Alta",
+                "expanded": true,
+                "subtasks": [
+                    {
+                        "id": "1",
+                        "title": "Implementar notificaciones por correo electrónico",
+                        "type": "Subtarea",
+                        "status": "Por hacer",
+                        "description": "<p>Enviar correos electrónicos a los usuarios para notificarles sobre actualizaciones importantes.</p>",
+                        "assignee": {
+                            "name": "Jane Smith",
+                            "avatar": "https://bit.ly/ryan-florence"
+                        },
+                        "priority": "Baja",
+                        "acceptanceCriteria": [
+                            {
+                                "id": "1",
+                                "description": "El sistema puede enviar correos electrónicos utilizando una plantilla personalizada.",
+                                "isCompleted": false
+                            },
+                            {
+                                "id": "2",
+                                "description": "Los correos electrónicos se envían solo a los usuarios que los hayan activado.",
+                                "isCompleted": false
+                            }
+                        ]
+                    },
+                    {
+                        "id": "2",
+                        "title": "Implementar notificaciones push",
+                        "type": "Subtarea",
+                        "status": "Por hacer",
+                        "description": "<p>Mostrar notificaciones push en tiempo real en el navegador o dispositivo móvil.</p>",
+                        "assignee": {
+                            "name": "Jane Smith",
+                            "avatar": "https://bit.ly/ryan-florence"
+                        },
+                        "priority": "Baja",
+                        "acceptanceCriteria": [
+                            {
+                                "id": "1",
+                                "description": "Las notificaciones push funcionan en los principales navegadores.",
+                                "isCompleted": false
+                            },
+                            {
+                                "id": "2",
+                                "description": "El usuario puede gestionar qué notificaciones push desea recibir.",
+                                "isCompleted": false
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "name": "Project Beta",
+        "status": "Planificación",
+        "progress": 10,
+        "currentSprint": "Sprint 1",
+        "description": "Este es el proyecto Beta.",
+        "startDate": "2023-02-01",
+        "endDate": "2023-06-30",
+        "priority": "Media",
+        "tasks": [
+            {
+                "id": "1",
+                "title": "Módulo de Gestión de Proyectos",
+                "type": "Tarea",
+                "status": "Por hacer",
+                "assignee": {
+                    "name": "John Doe",
+                    "avatar": "https://bit.ly/dan-abramov"
+                },
+                "priority": "Alta",
+                "expanded": true,
+                "subtasks": [
+                    {
+                        "id": "2",
+                        "title": "Implementar gestión de proyectos",
+                        "type": "Subtarea",
+                        "status": "Por hacer",
+                        "assignee": {
+                            "name": "Jane Smith",
+                            "avatar": "https://bit.ly/ryan-florence"
+                        },
+                        "priority": "Baja"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Project Gamma",
+        "status": "Completo",
+        "progress": 100,
+        "currentSprint": "Sprint 5",
+        "description": "Este es el proyecto Gamma.",
+        "startDate": "2022-03-01",
+        "endDate": "2022-11-30",
+        "priority": "Baja",
+        "tasks": []
+    }
+]
